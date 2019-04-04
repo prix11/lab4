@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    h1 Checked Out Books
+    p
+      a.button(href="/new_book") Create New Book
+    p
+      | Filters 
+      a(href="/all_books") All
+      |  | 
+      a(href="/overdue_books") Overdue
+      |  | 
+      a(href="/checked_books") Checked Out
+      
+    table
+      thead
+        tr
+          th Title
+          th Author
+          th Genre
+          th Year Released
+      tbody
+        each checkedBook in checkedBooks
+          tr
+            td
+              a(href=`/books/${checkedBook.Book.id}`) #{checkedBook.Book.title}
+            td #{checkedBook.Book.author}
+            td #{checkedBook.Book.genre}
+            td #{checkedBook.Book.first_published}
